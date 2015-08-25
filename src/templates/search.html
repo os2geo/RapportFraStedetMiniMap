@@ -1,0 +1,14 @@
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown" dropdown is-open="search.isopen">
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group has-feedback">
+                <input id="searchbox" type="text" placeholder="{{widget.name}}" class="form-control" ng-model="search.input" ng-keyup="keyup($event)" ng-keydown="keydown($event)">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </form>
+        <ul id="searchlist" class="dropdown-menu" role="menu">
+            <li ng-repeat="s in search.result" ng-class="{active: s==selected}"><a href="#" ng-click="selectAddr(s)">{{s.tekst}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>
