@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
+        config: grunt.file.readJSON('config.json'),
         concat: {
             dist: {
                 dest: 'dist/<%= pkg.name %>.js',
@@ -71,8 +71,8 @@ module.exports = function (grunt) {
 
             "deploy": {
                 options: {
-                    user: 'admin',
-                    pass: 'wont775dock'
+                    user: '<%= config.couchdb.user %>',
+                    pass: '<%= config.couchdb.password %>'
                 },
                 files: {
                     'http://data.kosgis.dk/couchdb/app-d2121ee08caf832b73a160f9ea022ad9': 'tmp/leaflet.json'
@@ -80,8 +80,8 @@ module.exports = function (grunt) {
             },
             "local": {
                 options: {
-                    user: 'admin',
-                    pass: 'rutv2327'
+                    user: '<%= config.local.user %>',
+                    pass: '<%= config.local.password %>'
                 },
                 files: {
                     'http://localhost:5984/app-3495ccf8aafcb1541a0ef7cc2d01178e': 'tmp/leaflet.json'
