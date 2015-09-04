@@ -375,7 +375,7 @@
                                                 deferred.resolve(value);
                                             });
                                         } else {
-                                            value.leaflet = L.tileLayer(value.url, jsonTransformed);
+                                            value.leaflet = L.tileLayer.wms(value.url, jsonTransformed);
                                             deferred.resolve(value);
                                         }
                                     } else if (value.type === 'geojson' || value.type === 'database' || value.type === 'straks' || value.type === 'indberetninger' || value.type === 'opgaver') {
@@ -604,6 +604,20 @@
                             if ($rootScope.baselayer) {
                                 if ($rootScope.stateParams.x && $rootScope.stateParams.y && $rootScope.stateParams.z) {
                                     $scope.map.setView([$rootScope.stateParams.y, $rootScope.stateParams.x], $rootScope.stateParams.z);
+                                } else if ($rootScope.stateParams.aws) {
+                                    $http({
+                                        method: 'JSONP',
+                                        url: 'http://dawa.aws.dk/adgangsadresser',
+                                        params: angular.extend({
+                                            callback: 'JSON_CALLBACK'
+                                        }, {
+                                            q: $rootScope.stateParams.aws
+                                        })
+                                    }).then(function (res) {
+                                        if (res.data && res.data.length > 0) {
+                                            $scope.map.setView([res.data[0].adgangspunkt.koordinater[1], res.data[0].adgangspunkt.koordinater[0]], $rootScope.stateParams.z || $rootScope.baselayer.selectZoom || Infinity);
+                                        }
+                                    });
                                 }
                             } else {
                                 if (typeof $rootScope.configuration.isBaselayersCollapsed === 'undefined') {
@@ -616,8 +630,7 @@
                                 } else {
                                     $scope.isOverlaysCollapsed = $rootScope.configuration.isOverlaysCollapsed;
                                 }
-                                var i,
-                                    baselayer;
+                                var i, baselayer;
 
                                 for (i = 0; i < $rootScope.configuration.map.baselayers.length; i += 1) {
                                     baselayer = $rootScope.configuration.map.baselayers[i];
@@ -636,6 +649,20 @@
                                         }
                                         if ($rootScope.stateParams.x && $rootScope.stateParams.y && $rootScope.stateParams.z) {
                                             $scope.map.setView([$rootScope.stateParams.y, $rootScope.stateParams.x], $rootScope.stateParams.z);
+                                        } else if ($rootScope.stateParams.aws) {
+                                            $http({
+                                                method: 'JSONP',
+                                                url: 'http://dawa.aws.dk/adgangsadresser',
+                                                params: angular.extend({
+                                                    callback: 'JSON_CALLBACK'
+                                                }, {
+                                                    q: $rootScope.stateParams.aws
+                                                })
+                                            }).then(function (res) {
+                                                if (res.data && res.data.length > 0) {
+                                                    $scope.map.setView([res.data[0].adgangspunkt.koordinater[1], res.data[0].adgangspunkt.koordinater[0]], $rootScope.stateParams.z || $rootScope.baselayer.selectZoom || Infinity);
+                                                }
+                                            });
                                         } else {
                                             $scope.map.fitBounds(layer.bounds);
                                         }

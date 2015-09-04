@@ -15,9 +15,10 @@
 </head>
 
 <body>
-    
+
     <div id="map"></div>
     <script src="../bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="../bower_components/leaflet-hash/leaflet-hash.js"></script>
     <script src="../bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
     <script src="../bower_components/proj4/dist/proj4.js"></script>
     <script src="../bower_components/proj4leaflet/src/proj4leaflet.js"></script>
@@ -32,9 +33,10 @@
     <script>
         var map = new L.Map('map');
         var rfs = new L.Control.RFS({
-            
+
             kfticket: "/kfticket"
         }).addTo(map);
+        //var hash = new L.Hash(map);
     </script>
 </body>
 
@@ -45,4 +47,5 @@ http://localhost:5000/examples/index.html#/9ccb8d07ebc7f8a69958328d21e2fc53
 http://localhost:5000/examples/index.html#/8d891a7fb0a2bc59737bf9a08b06fad8
 http://localhost:5000/examples/index.html#/8982f9113a0d1890919d035037019e1d
 http://localhost:5000/examples/index.html#/28e9bc8dc71c80f1278f5d578b000e76
+http://localhost:5000/examples/index.html#/0cf16ed01ec89bd988508ebba03da889
 -->

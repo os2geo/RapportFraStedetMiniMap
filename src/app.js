@@ -19,7 +19,9 @@
                     $rootScope.appID = urlapp;
                     break;
                 } else if (urlapp.indexOf('localhost:5000') !== -1) {
-                    $rootScope.appID = "app-3495ccf8aafcb1541a0ef7cc2d01178e";
+                    //$rootScope.appID = "app-3495ccf8aafcb1541a0ef7cc2d01178e";
+                    $rootScope.appID = "app-d2121ee08caf832b73a160f9ea022ad9";
+
                     break;
                 }
             }
@@ -30,7 +32,7 @@
             $stateProvider
 
                 .state('config', {
-                url: '/:id?x&y&z',
+                url: '/:id?x&y&z&aws',
                 controller: 'config',
                 templateUrl: 'templates/config.html',
                 resolve: {

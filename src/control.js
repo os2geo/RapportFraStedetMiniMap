@@ -18,7 +18,7 @@
                 function ($rootScope) {
                     $rootScope.map = map;
                 }]);
-            var container = angular.element('<div></div>'),//angular.element('<leaflet-legend></leaflet-legend>'),
+            var container = angular.element('<div></div>'), //angular.element('<leaflet-legend></leaflet-legend>'),
                 navbar = angular.element('<leaflet-navbar></leaflet-navbar>'),
                 left = angular.element('<div ui-view class="sidebar" ng-show="sagsbehandler && !hideSidebar"></div>'),
                 right = angular.element('<leaflet-legend></leaflet-legend>');

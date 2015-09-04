@@ -24,7 +24,7 @@ var http = require('http'),
         }
 
         var result = cover.geojson(geom, limits);
-        
+
         result = cover.tiles(geom, limits);
         console.log(inspect(result, {
             depth: null,
@@ -55,7 +55,8 @@ app.all('/couchdb*', function (req, res) {
     res.set('Access-Control-Allow-Origin', 'http://localhost:8100');
     res.set('Access-Control-Allow-Methods', 'GET, PUT, POST, HEAD, DELETE');
     res.set('Access-Control-Allow-Headers', 'accept, authorization, content-type, origin, referer');
-    var url = "http://localhost:5984/" + req.url.substring(9);
+    //var url = "http://localhost:5984/" + req.url.substring(9);
+    var url = "http://geo.os2geo.dk/couchdb/" + req.url.substring(9);
     if (req.method === 'PUT') {
         req.pipe(request.put(url)).pipe(res);
     } else if (req.method === 'POST') {
