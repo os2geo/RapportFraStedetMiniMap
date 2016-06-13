@@ -18,9 +18,10 @@
     "angular-ui-router": "~0.2.13",
     "bootstrap": "~3.3.1",
     "fontawesome": "~4.2.0",
-    "leaflet": "~0.7.5",
+    "leaflet": "~0.7.7",
     "leaflet.markercluster": "~0.4.0",
     "proj4": "~2.3.3",
-    "proj4leaflet": "~0.7.0"
+    "proj4leaflet": "~0.7.2",
+    "Leaflet.MakiMarkers": "^1.0.1"
   }
 }

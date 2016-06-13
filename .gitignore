@@ -3,3 +3,4 @@ bower_components
 config.json
 tmp
 couchdb/_attachments
+couchdb kopi

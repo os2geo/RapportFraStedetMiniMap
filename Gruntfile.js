@@ -75,7 +75,7 @@ module.exports = function (grunt) {
                     pass: '<%= config.couchdb.password %>'
                 },
                 files: {
-                    'http://data.kosgis.dk/couchdb/app-d2121ee08caf832b73a160f9ea022ad9': 'tmp/leaflet.json'
+                    'http://geo.os2geo.dk/couchdb/app-d2121ee08caf832b73a160f9ea022ad9': 'tmp/leaflet.json'
                 }
             },
             "local": {

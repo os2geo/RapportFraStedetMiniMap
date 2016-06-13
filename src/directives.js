@@ -348,6 +348,9 @@
                                     if (typeof (value.maxZoom) !== 'undefined' && value.maxZoom !== null) {
                                         jsonTransformed.maxZoom = value.maxZoom;
                                     }
+                                    if (typeof (value.maxNativeZoom) !== 'undefined' && value.maxNativeZoom !== null) {
+                                        jsonTransformed.maxNativeZoom = value.maxNativeZoom;
+                                    }
                                     if (typeof (value.disableClusteringAtZoom) !== 'undefined' && value.disableClusteringAtZoom !== null) {
                                         jsonTransformed.disableClusteringAtZoom = value.disableClusteringAtZoom;
                                     }

@@ -8,7 +8,7 @@
                 <label>
                     <input type="radio" name="baselayer" value="{{$index}}" ng-model="selectedBaselayer" ng-click="baselayerChange(baselayer)">{{baselayer.name}}
                 </label>
-                <div collapse="baselayer.expand" class="alert alert-info"><i class="fa fa-question-circle"></i>  <span ng-bind-html="baselayer.description"></span>
+                <div collapse="baselayer.expand" class="alert alert-info"><i class="fa fa-question-circle"></i> <span ng-bind-html="baselayer.description"></span>
                 </div>
             </div>
         </div>
@@ -26,21 +26,26 @@
                     <table>
                         <tr ng-repeat="value in overlay.styles" ng-init="x=(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight):12">
 
-                            <td style="text-align:center;padding-right:5px">
-                                <svg ng-style="{'line-height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','width':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px' }">
+                            <td style="text-align:center;padding-right:5px" ng-if="value.pointType==='circle' || value.pointType==='circleMarker'">
+                                <svg  ng-style="{'line-height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','width':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px' }">
                                     <circle ng-if="value.displayAs==='Point'" ng-attr-cx="{{x}}" ng-attr-cy="{{x}}" ng-attr-r="{{value.style.radius||10}}" ng-attr-fill="{{value.style.fill?value.style.fillColor:'#fff'}}" ng-attr-fill-opacity="{{value.style.fillOpacity||0.5}}" ng-attr-stroke-opacity="{{value.style.opacity||0.5}}" ng-attr-stroke="{{value.style.color||'#03f'}}" ng-attr-stroke-width="{{value.style.weight||2}}"></circle>
                                     <line ng-if="value.displayAs==='Line'" x1="0" y1="12" x2="24" y2="12" ng-attr-stroke-opacity="{{value.style.opacity||0.5}}" ng-attr-stroke="{{value.style.color||'#03f'}}" ng-attr-stroke-width="{{value.style.weight||2}}"></line>
                                     <rect ng-if="value.displayAs==='Polygon'" ng-attr-x="{{value.style.weight||2}}" ng-attr-y="{{value.style.weight||2}}" ng-attr-width="{{(24-2*value.style.weight)||20}}" ng-attr-height="{{(24-2*value.style.weight)||20}}" ng-attr-fill="{{value.style.fill?value.style.fillColor:'#fff'}}" ng-attr-fill-opacity="{{value.style.fillOpacity||0.5}}" ng-attr-stroke-opacity="{{value.style.opacity||0.5}}" ng-attr-stroke="{{value.style.color||'#03f'}}" ng-attr-stroke-width="{{value.style.weight||2}}"></rect>
                                 </svg>
                             </td>
+                            <td style="text-align:center;padding-right:5px" ng-if="value.pointType==='marker'">                                
+                                <img src="lib/leaflet/dist/images/marker-icon.png" >
+                            </td>
+                            <td style="text-align:center;padding-right:5px;"  ng-if="value.pointType==='maki'">
+                                <img style="margin-bottom:-30px" ng-src="https://api.tiles.mapbox.com/v3/marker/pin-{{value.style.size}}-{{value.style.icon}}+{{value.style.color.substr(1)}}.png">
+                            </td>
                             <td>{{value.id}}</td>
                         </tr>
                     </table>
-                    <div class="alert alert-info" ng-if="overlay.description"><i class="fa fa-question-circle"></i>  <span ng-bind-html="overlay.description"></span>
+                    <div class="alert alert-info" ng-if="overlay.description"><i class="fa fa-question-circle"></i> <span ng-bind-html="overlay.description"></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

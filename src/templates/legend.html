@@ -39,9 +39,12 @@
                         <table>
                             <tr ng-repeat="value in overlay.styles" ng-init="x=(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight):12">
                                 <td style="text-align:center;padding-right:5px">
-                                    <svg ng-style="{'line-height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','width':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px' }">
+                                    {{value.style.pointType}}
+                                    <svg ng-if="value.style.pointType==='cirle' || value.style.pointType==='cirleMarker'" ng-style="{'line-height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','height':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px','width':(value.style.radius && value.style.weight)?(value.style.radius + value.style.weight)*2+'px':'24px' }">
                                         <circle ng-attr-cx="{{x}}" ng-attr-cy="{{x}}" ng-attr-r="{{value.style.radius||10}}" ng-attr-fill="{{value.style.fillColor||value.style.color||'#03f'}}" ng-attr-fill-opacity="{{value.style.fillOpacity||0.5}}" ng-attr-stroke-opacity="{{value.style.opacity||0.5}}" ng-attr-stroke="{{value.style.color||'#03f'}}" ng-attr-stroke-width="{{value.style.weight||2}}" />
                                     </svg>
+                                    <img src="lib/leaflet/dist/images/marker-icon.png" ng-if="value.style.pointType==='marker'">
+                                    <img ng-src="'https://api.tiles.mapbox.com/v3/marker/pin-'+value.style.size+'-'+value.style.icon+'+'+value.style.color.substr(1)+'.png" ng-if="value.style.pointType==='maki'">
                                 </td>
                                 <td>{{value.id}}</td>
                             </tr>
