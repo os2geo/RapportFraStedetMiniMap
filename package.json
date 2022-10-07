@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "express": "^4.9.5",
-    "geojson-vt": "git://github.com/runetvilum/geojson-vt#master",
+    "geojson-vt": "git+https://github.com/runetvilum/geojson-vt.git",
     "request": "^2.53.0",
     "tile-cover": "^2.4.0"
   }

@@ -17,7 +17,7 @@
                             n,
                             awskeyvalue = $scope.widget.options.split('='),
                             awsOptions = {
-                                baseUrl: 'http://dawa.aws.dk',
+                                baseUrl: 'https://dawa.aws.dk',
                                 adgangsadresserOnly: true
                             },
                             caches = [{}, {}, {}, {}],
@@ -610,7 +610,7 @@
                                 } else if ($rootScope.stateParams.aws) {
                                     $http({
                                         method: 'JSONP',
-                                        url: 'http://dawa.aws.dk/adgangsadresser',
+                                        url: 'https://dawa.aws.dk/adgangsadresser',
                                         params: angular.extend({
                                             callback: 'JSON_CALLBACK'
                                         }, {
@@ -655,7 +655,7 @@
                                         } else if ($rootScope.stateParams.aws) {
                                             $http({
                                                 method: 'JSONP',
-                                                url: 'http://dawa.aws.dk/adgangsadresser',
+                                                url: 'https://dawa.aws.dk/adgangsadresser',
                                                 params: angular.extend({
                                                     callback: 'JSON_CALLBACK'
                                                 }, {
